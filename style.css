@@ -2,10 +2,8 @@
 
 /* ==========================================
    CSS: 変数・基本設定
-   レイアウトや各ステージのテーマカラーを一元管理します。
    ========================================== */
 :root {
-    /* ステージのテーマカラー */
     --color-michinoku: #D4AF37;
     --color-arahabaki: #9932CC;
     --color-hatahata: #B0003A;
@@ -14,40 +12,31 @@
     --color-banetsu: #0077B6;
     --color-food: #E67E22;
 
-    /* システム全体の基本カラー・サイズ設定 */
     --color-mytt: #444444;
     --bg-color: #ffffff;
     --grid-border: #e0e0e0;
     --text-color: #333;
     
-    /* タイムテーブルの寸法設定 */
-    --time-width: 60px;   /* 左側の時間軸の幅 */
-    --col-width: 160px;   /* 各ステージ列の幅 */
-    --px-per-min: 2;      /* 1分あたりの高さ(px)。1時間=120pxになります */
+    --time-width: 60px;   
+    --col-width: 160px;   
+    --px-per-min: 2;      
 }
 
-/* ==========================================
-   CSS: ベース・リセット
-   ========================================== */
 body {
     margin: 0;
     padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
-    overflow: hidden; /* 画面全体のスクロールを防止。内部コンテナでスクロールさせます */
+    overflow: hidden; 
 }
 
-/* ==========================================
-   CSS: レイアウト構造 (App Container)
-   ========================================== */
 .app-container {
     display: flex;
     flex-direction: column;
-    height: 100vh; /* ビューポートの高さいっぱいに展開 */
+    height: 100vh; 
 }
 
-/* --- ヘッダー・タブ --- */
 header {
     background-color: #111;
     color: white;
@@ -91,7 +80,6 @@ h1 {
     font-weight: bold;
 }
 
-/* --- コンテンツ表示切り替え --- */
 .content-section { 
     display: none; 
     flex-grow: 1; 
@@ -103,9 +91,6 @@ h1 {
     flex-direction: column;
 }
 
-/* ==========================================
-   CSS: タイムテーブル表示エリア
-   ========================================== */
 .scroll-container { 
     display: flex;
     flex-direction: column; 
@@ -113,10 +98,9 @@ h1 {
     overflow: hidden; 
 }
 
-/* --- ステージヘッダー行 --- */
 .stage-headers-wrapper {
     display: flex;
-    overflow-x: hidden; /* JSでスクロールを同期させるため非表示 */
+    overflow-x: hidden; 
     flex-shrink: 0;
     border-bottom: 2px solid #333;
     background: #f9f9f9;
@@ -169,7 +153,6 @@ h1 {
     background: #ccc;
 }
 
-/* --- タイムテーブル本体（グリッド） --- */
 .timetable-wrapper { 
     display: flex; 
     flex-grow: 1; 
@@ -177,7 +160,6 @@ h1 {
     position: relative;
 }
 
-/* 左側の時間軸列 */
 .time-col {
     width: var(--time-width);
     flex-shrink: 0;
@@ -206,7 +188,6 @@ h1 {
     padding: 0 2px; 
 }
 
-/* 各ステージのスケジュール列 */
 .grid-col { 
     width: var(--col-width);
     flex-shrink: 0; 
@@ -218,7 +199,6 @@ h1 {
     background-color: rgba(238, 238, 238, 0.3);
 }
 
-/* 10分刻みの背景ライン */
 .grid-bg-lines {
     position: absolute;
     inset: 0; 
@@ -228,9 +208,6 @@ h1 {
     z-index: 0;
 }
 
-/* ==========================================
-   CSS: アーティストブロック
-   ========================================== */
 .artist-block {
     position: absolute;
     left: 2px; 
@@ -249,7 +226,6 @@ h1 {
     transition: border-color 0.2s;
 }
 
-/* お気に入り登録時のハイライト */
 .artist-block.favorited { 
     border: 2px solid #FFD700 !important;
     box-shadow: 0 0 8px rgba(255, 215, 0, 0.8); 
@@ -285,7 +261,6 @@ h1 {
     flex-shrink: 0;
 }
 
-/* お気に入り登録ボタン（スター） */
 .fav-btn { 
     background: none;
     border: none; 
@@ -302,9 +277,6 @@ h1 {
     text-shadow: 0 0 3px rgba(0,0,0,0.8);
 }
 
-/* ==========================================
-   CSS: 現在時刻ライン＆演奏中アニメーション
-   ========================================== */
 .current-time-line { 
     position: absolute;
     left: 0; 
@@ -339,9 +311,6 @@ h1 {
     z-index: 3; 
 }
 
-/* ==========================================
-   CSS: フードセクション
-   ========================================== */
 #foodSection {
     overflow-y: auto;
     padding: 15px;
@@ -357,7 +326,6 @@ h1 {
     margin-bottom: 15px;
 }
 
-/* エリアのトグルボタン */
 .food-area-toggle {
     background-color: #f7f7f7;
     color: #333;
@@ -389,22 +357,20 @@ h1 {
     color: #888;
 }
 
-/* フードエリアを横スクロール対応に変更 */
 .food-area-content {
     display: none;
     gap: 15px;
     margin-bottom: 20px;
-    flex-wrap: nowrap; /* 折り返さない */
-    overflow-x: auto;  /* はみ出たら横スクロール */
-    padding-bottom: 10px; /* スクロールバー用の余白 */
+    flex-wrap: nowrap; 
+    overflow-x: auto;  
+    padding-bottom: 10px; 
     -webkit-overflow-scrolling: touch;
 }
 
 .food-area-content.open { 
-    display: flex; /* gridからflexに変更 */
+    display: flex; 
 }
 
-/* フードカード本体 */
 .food-card {
     background: #fff;
     border: 1px solid #e0e0e0;
@@ -415,7 +381,6 @@ h1 {
     flex-direction: column;
     transition: box-shadow 0.2s, transform 0.2s;
     position: relative;
-    /* 横スクロール対応の固定幅設定 */
     min-width: 280px; 
     width: 280px;
     flex-shrink: 0;
@@ -426,7 +391,6 @@ h1 {
     transform: translateY(-2px);
 }
 
-/* フード用お気に入りボタン */
 .food-fav-btn {
     position: absolute;
     top: 10px;
@@ -457,7 +421,6 @@ h1 {
     text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
 }
 
-/* ドラッグ＆ドロップ対応スタイル */
 .draggable-card { 
     cursor: grab;
 }
@@ -468,7 +431,6 @@ h1 {
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
-/* フードカード内部要素 */
 .food-card-img-wrapper {
     width: 100%;
     height: 160px;
@@ -482,11 +444,11 @@ h1 {
     overflow: hidden;
 }
 
+/* ★変更点：表示が隠れないように、display: none; を削除しました */
 .food-card-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: none;
 }
 
 .food-card-body {
@@ -539,18 +501,21 @@ h1 {
     display: block;
 }
 
+/* ★変更点：コンテナを幅100%基準にし、transformによるズームからwidthによるズームへ移行 */
 .map-wrapper { 
-    display: inline-block; 
-    min-width: 100%; 
+    display: block; 
+    width: 100%; /* 初期値は100%、JSで書き換わります */
     min-height: 100%; 
+    margin: 0 auto;
     text-align: center; 
     padding: 20px;
     box-sizing: border-box; 
-    transform-origin: 0 0; 
+    transition: width 0.2s ease-out; /* ズーム時のアニメーション */
 }
 
+/* ★変更点：画像がコンテナの幅に追従するように修正。これによりスクロールバーが見切れずに生成されます */
 .area-map-img { 
-    max-width: 100%; 
+    width: 100%; 
     height: auto;
     display: block; 
     margin: 0 auto 20px auto; 
@@ -582,7 +547,6 @@ h1 {
     justify-content: center;
 }
 
-/* --- デジタル時計 --- */
 #digitalClock {
     position: fixed;
     top: 10px; 
@@ -600,7 +564,6 @@ h1 {
     box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
 }
 
-/* --- 更新日時 --- */
 #lastUpdated { 
     color: #ccc;
     font-size: 11px; 
