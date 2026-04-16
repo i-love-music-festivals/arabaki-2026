@@ -389,15 +389,19 @@ h1 {
     color: #888;
 }
 
+/* フードエリアを横スクロール対応に変更 */
 .food-area-content {
     display: none;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 15px;
     margin-bottom: 20px;
+    flex-wrap: nowrap; /* 折り返さない */
+    overflow-x: auto;  /* はみ出たら横スクロール */
+    padding-bottom: 10px; /* スクロールバー用の余白 */
+    -webkit-overflow-scrolling: touch;
 }
 
 .food-area-content.open { 
-    display: grid;
+    display: flex; /* gridからflexに変更 */
 }
 
 /* フードカード本体 */
@@ -411,6 +415,10 @@ h1 {
     flex-direction: column;
     transition: box-shadow 0.2s, transform 0.2s;
     position: relative;
+    /* 横スクロール対応の固定幅設定 */
+    min-width: 280px; 
+    width: 280px;
+    flex-shrink: 0;
 }
 
 .food-card:hover {

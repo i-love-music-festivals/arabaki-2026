@@ -83,7 +83,7 @@ const foodList = [
         { name: "③富士山食堂", menus: ["富士宮やきそば", "富士宮やきそば目玉焼きのせ", "つぶつぶみかんスカッシュ"], message: "静岡県富士宮市のご当地グルメ富士宮やきそばを地元出身の店主が焼きたてでご提供いたします！" },
         { name: "④麦とろ人", menus: ["牛たん塩たれ麦飯とろろ丼", "厚切り牛たん塩串", "川越かけだれ唐揚げ"], message: "群馬県産の大和芋を使用した牛たん麦とろ丼！塩麴漬けの牛たんとの相性抜群です！！" },
         { name: "⑤大和田らーめん", menus: ["担々麺"], message: "痺れるような辛さの濃厚なスープは食べる手が止まらず、やみつきになること間違いありません！" },
-        { name: "⑥犇堂", menus: ["やわらか牛ハラミ丼", "からあげ", "米粉チュロス"], message: "こだわりのハラミ肉をどんぶりにしました！！\n特製のタレと肉汁の相性も抜群！是非ご賞味ください！！" },
+        { name: "⑥犇堂", menus: ["やわらか牛ハラミ丼", "からあげ", "米粉チュロス"], message: "こだわりのハラミ肉をどんぶりにしました！！特製のタレと肉汁の相性も抜群！是非ご賞味ください！！" },
         { name: "⑦K's Pit", menus: ["リアルアメリカンバーガー", "沖縄カーリーポテト", "生ドーナツ"], message: "愛知県にある創業25年のアメリカンダイナーK's Pitです。メニューと店構えでお客様を魅了します。" },
         { name: "⑧まぐろ問屋いとう水産", menus: ["特選本まぐろ竜田揚げ", "魚河岸まかない丼", "エビホタテロング串"], message: "アラバキ！今年も海鮮づくしでの出店です！魚河岸のプロ集団が吟味したネタを皆様にお届けいたします！" },
         { name: "⑨ロティサリーチキン専門店エンシニータス", menus: ["ロティサリーチキン＆ハーブライスセット", "ロティサリーチキン欧風\"山賊\"カレー", "スパイシーロングつくねぐし"], message: "焼きたてロティサリーチキンにポテトとハーブライス。ヘルシーかつボリューム満点の看板商品です！" },
@@ -93,7 +93,7 @@ const foodList = [
         { name: "⑬コンフェッティ", menus: ["山形芋煮", "ローストチキンレッグ", "山形牛タコライス"], message: "山形のソウルフード芋煮を熱々でお届けします。音楽とともに一緒に盛り上がりましょう！" },
         { name: "⑭きちみ製麺", menus: ["おくずかけうーめん", "特製鶏だしうーめん", "肉味噌うーめん"], message: "その空腹、最高の一杯で満たします。400年続く白石うーめんがARABAKIを熱く支えます！" },
         { name: "⑮TRAILER BAR HAKU", menus: ["のどぐろフリット", "甘えびフリット", "福井ソースカツ丼"], message: "石川県より、北陸の美味しいをお届けいたします！ドリンクも北陸由来で揃えております。" },
-        { name: "⑯PIZZA　BRAVO", menus: ["マルゲリータ", "しらすとネギ", "ペパロニ"], message: "石窯で焼く本格ナポリピザ。500℃の高温でカリッ、フワッと焼き上げます。" },
+        { name: "十六PIZZA　BRAVO", menus: ["マルゲリータ", "しらすとネギ", "ペパロニ"], message: "石窯で焼く本格ナポリピザ。500℃の高温でカリッ、フワッと焼き上げます。" },
         { name: "⑰Million Dollar Ice Cream Truck", menus: ["シナモンアップルパイ", "ブルーベリーチーズケーキ", "バナナスモア"], message: "神奈川県、米海軍横須賀基地のアメリカ人が絶賛する濃厚・手作りのアメリカンアイスクリーム。" },
         { name: "⑱ibiscafe船岡", menus: ["米粉チュロス", "チーズハットグ", "ふりふりポテト"], message: "今年アラバキに初参戦！サクッと、モチっとした食感の米粉チュロスをぜひお楽しみください！" },
         { name: "⑲月美家", menus: ["大阪西成風ホルモン焼"], message: "特製ダレとにんにくがガツンと効いた大阪西成風ホルモン焼！ビール片手に極上のフェス飯を食らい尽くせ！" },
@@ -683,9 +683,9 @@ function renderFoodSection() {
     <div class="food-area-content open" id="foodFavoritesList">
     `;
     
-    // お気に入りがない場合のガイドメッセージ
+    // お気に入りがない場合のガイドメッセージ（横並びレイアウトに合わせて修正）
     if (foodFavoritesOrder.length === 0) {
-        html += `<div style="grid-column: 1 / -1; padding: 15px; color: #777; font-size: 13px; text-align: center; border: 2px dashed #e0e0e0; border-radius: 8px;">各メニューの右上にある星マーク(★)を押すと、ここに追加されます。<br>追加されたカードはドラッグして並べ替え可能です。</div>`;
+        html += `<div style="flex: 1; padding: 15px; color: #777; font-size: 13px; text-align: center; border: 2px dashed #e0e0e0; border-radius: 8px;">各メニューの右上にある星マーク(★)を押すと、ここに追加されます。<br>追加されたカードはドラッグして並べ替え可能です。</div>`;
     } else {
         // 保存された順番通りにカードを描画
         foodFavoritesOrder.forEach(favItem => {
@@ -752,21 +752,23 @@ function setupDragAndDrop() {
 
 /**
  * ドラッグ中に、マウス位置から見て「どの要素の手前に挿入すべきか」を計算する関数
+ * ★横スクロールのレイアウトに合わせて、X座標（横方向）ベースの計算に変更しました
  */
 function getDragAfterElement(container, x, y) {
     const draggableElements = [...container.querySelectorAll('.draggable-card:not(.dragging)')];
-    for (const child of draggableElements) {
+    
+    return draggableElements.reduce((closest, child) => {
         const box = child.getBoundingClientRect();
-        // マウスが要素の高さ範囲内にいる場合
-        if (y >= box.top && y <= box.bottom) {
-            // 要素の左半分より左にいれば、その要素の前に挿入する
-            if (x < box.left + box.width / 2) return child;
-        } else if (y < box.top) {
-            // マウスが要素の行より上にあれば、その要素の前に挿入する
-            return child;
+        // 要素の横幅の中心より左か右かで判定
+        const offset = x - (box.left + box.width / 2);
+        
+        // マウス位置が要素の中心より左側にあり、かつ直前の要素より近い場合
+        if (offset < 0 && offset > closest.offset) {
+            return { offset: offset, element: child };
+        } else {
+            return closest;
         }
-    }
-    return null;
+    }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
 
 /**
